@@ -15,5 +15,23 @@ namespace Containers.Models
             SerialNumber = $"KON-{type}-{_idCounter++}";
             MaxCapacity = maxCapacity;
         }
+
+        public virtual void Load(double weight)
+        {
+            if (CurrentLoad + weight > MaxCapacity)
+                throw new OverfillException($"Cannot load {weight}kg. Exceeds max capacity of {MaxCapacity}kg.");
+
+            CurrentLoad += weight;
+        }
+
+        public virtual void Unload()
+        {
+            CurrentLoad = 0;
+        }
+
+        public override string ToString()
+        {
+            return $"SerialNumber: {SerialNumber}, MaxCapacity: {MaxCapacity}kg, CurrentLoad: {CurrentLoad}kg";
+        }
     }
 }
