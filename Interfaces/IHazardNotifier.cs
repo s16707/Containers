@@ -1,4 +1,6 @@
-﻿namespace Containers.Interfaces
+﻿using System;
+
+namespace Containers.Interfaces
 {
     public interface IHazardNotifier
     {
